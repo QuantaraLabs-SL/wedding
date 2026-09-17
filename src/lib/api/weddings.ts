@@ -71,7 +71,7 @@ export async function getWeddingBySlug(slug: string): Promise<WeddingConfig | nu
     }
 
     // Sort events and gallery_images
-    const config = wedding as WeddingConfig;
+    const config = wedding as unknown as WeddingConfig;
     config.events = config.events?.sort((a, b) => a.sort_order - b.sort_order) || [];
     config.gallery_images = config.gallery_images?.sort((a, b) => a.sort_order - b.sort_order) || [];
 

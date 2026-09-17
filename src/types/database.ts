@@ -26,6 +26,9 @@ export interface Database {
           created_at: string
           updated_at: string
         }
+        Insert: any
+        Update: any
+        Relationships: any[]
       }
       events: {
         Row: {
@@ -43,6 +46,9 @@ export interface Database {
           maps_url: string | null
           sort_order: number
         }
+        Insert: any
+        Update: any
+        Relationships: any[]
       }
       gallery_images: {
         Row: {
@@ -53,6 +59,9 @@ export interface Database {
           sort_order: number
           created_at: string
         }
+        Insert: any
+        Update: any
+        Relationships: any[]
       }
       themes: {
         Row: {
@@ -60,6 +69,9 @@ export interface Database {
           name: string
           configuration: Json
         }
+        Insert: any
+        Update: any
+        Relationships: any[]
       }
       guests: {
         Row: {
@@ -71,6 +83,9 @@ export interface Database {
           invitation_token: string | null
           created_at: string
         }
+        Insert: any
+        Update: any
+        Relationships: any[]
       }
       rsvps: {
         Row: {
@@ -109,7 +124,20 @@ export interface Database {
           created_at?: string
           updated_at?: string
         }
+        Relationships: any[]
       }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
     }
   }
 }

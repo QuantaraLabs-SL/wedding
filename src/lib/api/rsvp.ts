@@ -9,7 +9,7 @@ export async function submitRSVP(rsvpData: RsvpInsert): Promise<{ success: boole
     
     const { error } = await supabase
       .from('rsvps')
-      .insert(rsvpData);
+      .insert([rsvpData as any]);
 
     if (error) {
       console.error('Supabase RSVP insert error:', error);
