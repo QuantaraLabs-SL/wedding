@@ -1,9 +1,9 @@
-import { EventConfig } from '@/types/database';
+import { WeddingEvent } from '@/types/database';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, MapPin, Navigation, CalendarPlus } from 'lucide-react';
 import GoldOrnament from '@/components/ui/gold/GoldOrnament';
 
-export default function EventsTimeline({ events }: { events: EventConfig[] }) {
+export default function EventsTimeline({ events }: { events: WeddingEvent[] }) {
   return (
     <section className="py-20 mobile-padding relative bg-soft-gold-bg overflow-hidden">
       <div className="w-full max-w-[360px] mx-auto relative z-10">
@@ -25,7 +25,7 @@ export default function EventsTimeline({ events }: { events: EventConfig[] }) {
           {events.map((event, index) => {
             const startDate = new Date(event.event_date);
             const calendarLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${startDate.toISOString().replace(/-|:|\.\d\d\d/g, "")}/${startDate.toISOString().replace(/-|:|\.\d\d\d/g, "")}&details=${encodeURIComponent('Wedding Celebration')}&location=${encodeURIComponent(event.venue_name + ', ' + event.address)}`;
-            const mapLink = event.location_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.venue_name + ' ' + event.address)}`;
+            const mapLink = event.maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.venue_name + ' ' + event.address)}`;
 
             return (
               <motion.div 

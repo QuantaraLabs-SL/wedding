@@ -54,7 +54,7 @@ export default function OpeningScreen({
           {wedding.events && wedding.events.length > 0 && (
             <div className="mt-4 font-sans text-mobile-small text-dark-text opacity-80 uppercase tracking-widest leading-relaxed">
               <p>{wedding.events[0].venue_name}</p>
-              <p>{wedding.events[0].location}</p>
+              <p>{wedding.events[0].address}</p>
             </div>
           )}
           

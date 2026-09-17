@@ -1,9 +1,9 @@
-import { EventConfig } from '@/types/database';
+import { WeddingEvent } from '@/types/database';
 import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
 import GoldOrnament from '@/components/ui/gold/GoldOrnament';
 
-export default function VenueSection({ event }: { event: EventConfig }) {
+export default function VenueSection({ event }: { event: WeddingEvent }) {
   if (!event) return null;
 
   return (

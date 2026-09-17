@@ -1,10 +1,10 @@
-import { GalleryImageConfig } from '@/types/database';
+import { GalleryImage } from '@/types/database';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import GoldOrnament from '@/components/ui/gold/GoldOrnament';
 import GoldFrame from '@/components/ui/gold/GoldFrame';
 
-export default function Gallery({ images }: { images: GalleryImageConfig[] }) {
+export default function Gallery({ images }: { images: GalleryImage[] }) {
   if (!images || images.length === 0) {
     return (
       <section className="py-20 mobile-padding relative bg-pure-white flex flex-col items-center">

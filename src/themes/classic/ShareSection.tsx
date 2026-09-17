@@ -77,7 +77,7 @@ export default function ShareSection({ wedding }: { wedding: WeddingConfig }) {
               {copied ? 'Copied!' : 'Copy Link'}
             </button>
 
-            {typeof navigator !== 'undefined' && navigator.share && (
+            {typeof navigator !== 'undefined' && 'share' in navigator && (
               <button
                 onClick={handleNativeShare}
                 className="mt-2 text-dark-text/70 text-xs font-sans uppercase tracking-widest underline underline-offset-4 p-2 active:text-luxury-gold"
