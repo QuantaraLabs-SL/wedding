@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary-bg: #FFFDF8;
+  --color-pure-white: #FFFFFF;
+  --color-luxury-gold: #D4AF37;
+  --color-bright-gold: #F4D06F;
+  --color-champagne-gold: #E8C875;
+  --color-deep-gold: #A67C00;
+  --color-dark-text: #24201A;
+  --color-soft-gold-bg: #FBF3D7;
+
+  /* Fonts */
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-montserrat);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --primary-bg: #FFFDF8;
+  --pure-white: #FFFFFF;
+  --luxury-gold: #D4AF37;
+  --bright-gold: #F4D06F;
+  --champagne-gold: #E8C875;
+  --deep-gold: #A67C00;
+  --dark-text: #24201A;
+  --soft-gold-bg: #FBF3D7;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--dark-text);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Gradients */
+.bg-gold-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--deep-gold) 0%,
+    var(--luxury-gold) 30%,
+    var(--bright-gold) 55%,
+    var(--luxury-gold) 75%,
+    var(--deep-gold) 100%
+  );
+}
+
+.text-gold-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--deep-gold) 0%,
+    var(--luxury-gold) 30%,
+    var(--bright-gold) 55%,
+    var(--luxury-gold) 75%,
+    var(--deep-gold) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-champagne-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--pure-white) 0%,
+    var(--soft-gold-bg) 50%,
+    var(--primary-bg) 100%
+  );
+}
+
+.bg-dark-luxury-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--dark-text) 0%,
+    #110f0c 100%
+  );
 }
