@@ -97,6 +97,18 @@ export interface Database {
           created_at?: string
           updated_at?: string
         }
+        Update: {
+          id?: string
+          wedding_id?: string
+          guest_id?: string | null
+          guest_name?: string
+          email?: string | null
+          attendance?: 'attending' | 'not_attending'
+          guest_count?: number
+          message?: string | null
+          created_at?: string
+          updated_at?: string
+        }
       }
     }
   }
