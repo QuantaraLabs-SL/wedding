@@ -7,6 +7,7 @@ import GoldOrnament from '@/components/ui/gold/GoldOrnament';
 import { WeddingConfig } from '@/types/database';
 import { submitRSVP } from '@/lib/api/rsvp';
 import { sendRsvpNotification } from '@/lib/emailjs';
+import { CheckCircle2 } from 'lucide-react';
 
 export default function RSVPForm({ wedding }: { wedding: WeddingConfig }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -76,18 +77,21 @@ export default function RSVPForm({ wedding }: { wedding: WeddingConfig }) {
   };
 
   return (
-    <section className="py-24 px-6 relative bg-pure-white" id="rsvp">
-      <div className="max-w-xl mx-auto text-center relative z-10">
+    <section className="py-20 mobile-padding relative bg-pure-white" id="rsvp">
+      <div className="w-full max-w-[360px] mx-auto text-center relative z-10 flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12"
+          className="mb-10 w-full"
         >
-          <GoldOrnament className="w-8 h-8 mb-6 mx-auto" />
-          <h2 className="font-serif text-3xl md:text-5xl text-luxury-gold mb-4 leading-tight">
-            We&apos;d Love To <br /> Celebrate With You
+          <GoldOrnament className="w-6 h-6 mb-4 mx-auto" />
+          <h2 className="font-serif heading-mobile text-luxury-gold mb-2 leading-tight uppercase tracking-widest">
+            RSVP
           </h2>
+          <p className="text-dark-text/70 text-mobile-small mt-2 font-sans">
+            Please let us know if you can make it.
+          </p>
         </motion.div>
 
         <AnimatePresence mode="wait">
@@ -96,29 +100,18 @@ export default function RSVPForm({ wedding }: { wedding: WeddingConfig }) {
               key="success"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-soft-gold-bg border border-luxury-gold/30 p-12 rounded-xl flex flex-col items-center justify-center space-y-6"
+              className="bg-soft-gold-bg border border-luxury-gold/30 p-8 rounded-xl flex flex-col items-center justify-center space-y-6 w-full"
             >
-              <h3 className="font-serif text-4xl text-luxury-gold uppercase tracking-widest mb-4">
-                Thank You
+              <CheckCircle2 className="w-16 h-16 text-luxury-gold mb-2" />
+              <h3 className="font-serif text-3xl text-luxury-gold uppercase tracking-widest text-center leading-tight">
+                Thank You! &hearts;
               </h3>
-              <p className="font-sans text-dark-text/80 leading-relaxed max-w-md mx-auto">
-                Your RSVP has been received. We look forward to celebrating this special day with you.
+              <p className="font-sans text-dark-text/90 leading-relaxed text-center text-mobile-body font-medium">
+                Your RSVP has been received.
               </p>
-              
-              <div className="pt-8 border-t border-luxury-gold/20 w-full mt-4">
-                <p className="font-serif text-luxury-gold italic text-xl">
-                  {wedding.bride_name} & {wedding.groom_name}
-                </p>
-                {wedding.wedding_date && (
-                  <p className="font-sans text-xs tracking-[0.2em] uppercase mt-2 text-dark-text/60">
-                    {new Date(wedding.wedding_date).toLocaleDateString('en-GB', {
-                      day: '2-digit',
-                      month: 'long',
-                      year: 'numeric'
-                    })}
-                  </p>
-                )}
-              </div>
+              <p className="font-sans text-dark-text/80 leading-relaxed text-center text-mobile-small">
+                {attending ? "We look forward to celebrating with you!" : "Thank you for letting us know."}
+              </p>
             </motion.div>
           ) : (
             <motion.form
@@ -127,93 +120,107 @@ export default function RSVPForm({ wedding }: { wedding: WeddingConfig }) {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               onSubmit={handleSubmit}
-              className="flex flex-col gap-6 text-left"
+              className="flex flex-col gap-6 text-left w-full"
             >
               {error && (
-                <div className="p-4 bg-red-50 text-red-600 border border-red-100 rounded-md text-sm font-sans text-center">
+                <div className="p-4 bg-red-50 text-red-600 border border-red-100 rounded-md text-sm font-sans text-center shadow-sm">
                   {error}
                 </div>
               )}
 
-              <div className="flex flex-col md:flex-row gap-4">
-                <button
-                  type="button"
-                  onClick={() => setAttending(true)}
-                  className={`flex-1 py-4 px-4 rounded-md border font-sans text-sm tracking-widest uppercase transition-all duration-300 ${
-                    attending === true 
-                      ? 'bg-luxury-gold border-luxury-gold text-pure-white shadow-lg shadow-luxury-gold/20' 
-                      : 'bg-pure-white border-luxury-gold/40 text-luxury-gold hover:border-luxury-gold hover:bg-soft-gold-bg'
-                  }`}
-                >
-                  Joyfully Attending
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setAttending(false)}
-                  className={`flex-1 py-4 px-4 rounded-md border font-sans text-sm tracking-widest uppercase transition-all duration-300 ${
-                    attending === false 
-                      ? 'bg-luxury-gold border-luxury-gold text-pure-white shadow-lg shadow-luxury-gold/20' 
-                      : 'bg-pure-white border-luxury-gold/40 text-luxury-gold hover:border-luxury-gold hover:bg-soft-gold-bg'
-                  }`}
-                >
-                  Unable to Attend
-                </button>
+              <div className="space-y-3">
+                <label className="font-sans text-xs uppercase tracking-widest text-dark-text/80 font-semibold block ml-1 mb-2">
+                  Attendance
+                </label>
+                <div className="flex flex-col gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setAttending(true)}
+                    className={`touch-target w-full rounded-md border font-sans text-sm tracking-widest uppercase transition-all duration-300 font-semibold ${
+                      attending === true 
+                        ? 'bg-luxury-gold border-luxury-gold text-pure-white shadow-lg shadow-luxury-gold/20' 
+                        : 'bg-pure-white border-luxury-gold/40 text-luxury-gold hover:border-luxury-gold hover:bg-soft-gold-bg'
+                    }`}
+                  >
+                    &#10003; Joyfully Attending
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setAttending(false)}
+                    className={`touch-target w-full rounded-md border font-sans text-sm tracking-widest uppercase transition-all duration-300 font-semibold ${
+                      attending === false 
+                        ? 'bg-luxury-gold border-luxury-gold text-pure-white shadow-lg shadow-luxury-gold/20' 
+                        : 'bg-pure-white border-luxury-gold/40 text-luxury-gold hover:border-luxury-gold hover:bg-soft-gold-bg'
+                    }`}
+                  >
+                    &#10005; Unable to Attend
+                  </button>
+                </div>
               </div>
 
-              <div className="space-y-2 mt-4">
-                <label className="font-sans text-xs uppercase tracking-widest text-dark-text/70 ml-1">Full Name</label>
+              <div className="space-y-2 mt-2">
+                <label className="font-sans text-xs uppercase tracking-widest text-dark-text/80 font-semibold ml-1">Full Name</label>
                 <input 
                   type="text" 
                   required
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="E.g. Mr. & Mrs. Perera" 
-                  className="w-full bg-pure-white border border-luxury-gold/40 rounded-md p-4 text-dark-text focus:outline-none focus:ring-1 focus:ring-luxury-gold focus:border-luxury-gold transition-all"
+                  className="touch-target w-full bg-pure-white border border-luxury-gold/40 rounded-md px-4 py-3 text-dark-text focus:outline-none focus:ring-2 focus:ring-luxury-gold focus:border-transparent transition-all placeholder:opacity-50"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="font-sans text-xs uppercase tracking-widest text-dark-text/70 ml-1">Email Address</label>
+                <label className="font-sans text-xs uppercase tracking-widest text-dark-text/80 font-semibold ml-1">Email Address</label>
                 <input 
                   type="email" 
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="For confirmation and updates" 
-                  className="w-full bg-pure-white border border-luxury-gold/40 rounded-md p-4 text-dark-text focus:outline-none focus:ring-1 focus:ring-luxury-gold focus:border-luxury-gold transition-all"
+                  placeholder="For confirmation" 
+                  className="touch-target w-full bg-pure-white border border-luxury-gold/40 rounded-md px-4 py-3 text-dark-text focus:outline-none focus:ring-2 focus:ring-luxury-gold focus:border-transparent transition-all placeholder:opacity-50"
                 />
               </div>
 
               {attending === true && (
                 <div className="space-y-2">
-                  <label className="font-sans text-xs uppercase tracking-widest text-dark-text/70 ml-1">Number of Guests</label>
-                  <select 
-                    value={guestCount}
-                    onChange={(e) => setGuestCount(Number(e.target.value))}
-                    className="w-full bg-pure-white border border-luxury-gold/40 rounded-md p-4 text-dark-text focus:outline-none focus:ring-1 focus:ring-luxury-gold focus:border-luxury-gold transition-all appearance-none"
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
-                      <option key={n} value={n}>{n}</option>
-                    ))}
-                  </select>
+                  <label className="font-sans text-xs uppercase tracking-widest text-dark-text/80 font-semibold ml-1">Number of Guests</label>
+                  <div className="relative">
+                    <select 
+                      value={guestCount}
+                      onChange={(e) => setGuestCount(Number(e.target.value))}
+                      className="touch-target w-full bg-pure-white border border-luxury-gold/40 rounded-md px-4 py-3 text-dark-text focus:outline-none focus:ring-2 focus:ring-luxury-gold focus:border-transparent transition-all appearance-none"
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
+                        <option key={n} value={n}>{n}</option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-luxury-gold">
+                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                  </div>
                 </div>
               )}
               
               <div className="space-y-2">
-                <label className="font-sans text-xs uppercase tracking-widest text-dark-text/70 ml-1">Message (Optional)</label>
+                <label className="font-sans text-xs uppercase tracking-widest text-dark-text/80 font-semibold ml-1">Message <span className="opacity-60">(Optional)</span></label>
                 <textarea 
                   rows={3}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Leave a message for the couple..." 
-                  className="w-full bg-pure-white border border-luxury-gold/40 rounded-md p-4 text-dark-text focus:outline-none focus:ring-1 focus:ring-luxury-gold focus:border-luxury-gold transition-all"
+                  placeholder="Leave a message..." 
+                  className="w-full bg-pure-white border border-luxury-gold/40 rounded-md px-4 py-3 text-dark-text focus:outline-none focus:ring-2 focus:ring-luxury-gold focus:border-transparent transition-all placeholder:opacity-50 resize-none min-h-[100px]"
                 />
               </div>
 
-              <div className="mt-8 flex justify-center">
-                <GoldButton type="submit" disabled={isSubmitting || attending === null} className="w-full md:w-auto px-12">
-                  {isSubmitting ? 'Sending...' : 'Send RSVP'}
-                </GoldButton>
+              <div className="mt-6 w-full">
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting} 
+                  className="touch-target w-full bg-gold-gradient text-white rounded font-sans uppercase tracking-widest text-sm font-semibold active:opacity-80 transition-opacity shadow-lg"
+                >
+                  {isSubmitting ? 'Sending...' : 'CONFIRM RSVP'}
+                </button>
               </div>
             </motion.form>
           )}

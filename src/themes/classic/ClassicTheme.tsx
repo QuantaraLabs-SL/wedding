@@ -6,11 +6,14 @@ import { AnimatePresence, motion } from 'framer-motion';
 import OpeningScreen from './OpeningScreen';
 import Cover from './Cover';
 import InvitationMessage from './InvitationMessage';
+import CoupleSection from './CoupleSection';
 import Countdown from './Countdown';
 import EventsTimeline from './EventsTimeline';
 import VenueSection from './VenueSection';
 import Gallery from './Gallery';
 import RSVPForm from './RSVPForm';
+import ShareSection from './ShareSection';
+import QRCodeSection from './QRCodeSection';
 import Footer from './Footer';
 
 interface ClassicThemeProps {
@@ -42,6 +45,10 @@ export default function ClassicTheme({ wedding }: ClassicThemeProps) {
           {/* SECTION A: White */}
           <div className="bg-pure-white">
             <Cover wedding={wedding} />
+          </div>
+          
+          <div className="bg-pure-white">
+            <CoupleSection wedding={wedding} />
           </div>
 
           {/* SECTION B: Soft champagne/gold gradient */}
@@ -81,6 +88,10 @@ export default function ClassicTheme({ wedding }: ClassicThemeProps) {
           <div className="bg-pure-white">
             <RSVPForm wedding={wedding} />
           </div>
+          
+          <ShareSection wedding={wedding} />
+          
+          <QRCodeSection />
 
           <Footer wedding={wedding} />
         </motion.main>

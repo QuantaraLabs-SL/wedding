@@ -75,3 +75,38 @@ body {
     #110f0c 100%
   );
 }
+
+/* Mobile Typography & Layout */
+.mobile-padding {
+  padding-left: clamp(20px, 5vw, 24px);
+  padding-right: clamp(20px, 5vw, 24px);
+}
+
+.heading-mobile {
+  font-size: clamp(28px, 8vw, 36px);
+  line-height: 1.2;
+}
+
+.text-mobile-body {
+  font-size: clamp(15px, 4vw, 17px);
+  line-height: 1.6;
+}
+
+.text-mobile-small {
+  font-size: clamp(12px, 3.5vw, 14px);
+  line-height: 1.5;
+}
+
+.text-couple-names {
+  font-size: clamp(42px, 12vw, 72px);
+  line-height: 1.1;
+}
+
+/* Minimum Touch Targets */
+.touch-target {
+  min-height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

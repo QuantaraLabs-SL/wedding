@@ -36,26 +36,26 @@ export default function Countdown({ targetDate }: { targetDate: string }) {
   }, [targetDate]);
 
   return (
-    <section className="py-24 px-6 relative">
-      <div className="max-w-4xl mx-auto text-center relative z-10">
+    <section className="py-16 mobile-padding relative">
+      <div className="w-full max-w-[360px] mx-auto text-center relative z-10">
         <motion.h2 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-sans text-sm md:text-base text-luxury-gold mb-16 uppercase tracking-[0.2em] font-medium"
+          className="font-sans text-mobile-small text-luxury-gold mb-10 uppercase tracking-[0.2em] font-medium"
         >
-          Counting Down To Our Special Day
+          Counting Down
         </motion.h2>
 
         {isPassed ? (
           <p className="text-2xl font-serif text-luxury-gold italic">The big day is here!</p>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 justify-center">
+          <div className="flex flex-row justify-between items-center gap-2">
             {[
               { label: 'Days', value: timeLeft.days },
               { label: 'Hours', value: timeLeft.hours },
-              { label: 'Minutes', value: timeLeft.minutes },
-              { label: 'Seconds', value: timeLeft.seconds },
+              { label: 'Mins', value: timeLeft.minutes },
+              { label: 'Secs', value: timeLeft.seconds },
             ].map((item, idx) => (
               <motion.div 
                 key={idx} 
@@ -63,12 +63,12 @@ export default function Countdown({ targetDate }: { targetDate: string }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="flex flex-col items-center bg-pure-white py-8 px-4 rounded-lg border border-luxury-gold/30 shadow-[0_4px_20px_rgba(212,175,55,0.15)]"
+                className="flex-1 flex flex-col items-center bg-pure-white py-4 px-1 rounded border border-luxury-gold/40 shadow-sm"
               >
-                <span className="text-4xl md:text-5xl font-serif text-gold-gradient mb-3">
+                <span className="text-2xl md:text-3xl font-serif text-gold-gradient mb-1">
                   {item.value.toString().padStart(2, '0')}
                 </span>
-                <span className="text-xs uppercase tracking-widest text-luxury-gold font-medium">
+                <span className="text-[9px] md:text-xs uppercase tracking-wider text-luxury-gold font-medium">
                   {item.label}
                 </span>
               </motion.div>

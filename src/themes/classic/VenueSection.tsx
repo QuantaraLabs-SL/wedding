@@ -1,13 +1,13 @@
 import { EventConfig } from '@/types/database';
 import { motion } from 'framer-motion';
-import GoldButton from '@/components/ui/gold/GoldButton';
+import { MapPin } from 'lucide-react';
 import GoldOrnament from '@/components/ui/gold/GoldOrnament';
 
 export default function VenueSection({ event }: { event: EventConfig }) {
   if (!event) return null;
 
   return (
-    <section className="py-24 px-6 relative overflow-hidden bg-pure-white border-y border-luxury-gold/10">
+    <section className="py-20 mobile-padding relative overflow-hidden bg-pure-white border-y border-luxury-gold/10">
       {/* Subtle map-inspired background pattern */}
       <div 
         className="absolute inset-0 opacity-5 pointer-events-none"
@@ -17,33 +17,37 @@ export default function VenueSection({ event }: { event: EventConfig }) {
         }}
       />
       
-      <div className="max-w-2xl mx-auto text-center relative z-10">
+      <div className="w-full max-w-[360px] mx-auto text-center relative z-10 flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          className="w-full"
         >
-          <GoldOrnament className="w-8 h-8 mb-6 mx-auto" />
+          <GoldOrnament className="w-6 h-6 mb-6 mx-auto" />
           
-          <h2 className="font-serif text-3xl md:text-5xl text-luxury-gold mb-10">
+          <h2 className="font-serif heading-mobile text-luxury-gold mb-8 uppercase tracking-widest leading-none">
             Join Us
           </h2>
 
-          <div className="font-sans mb-12">
-            <h3 className="text-xl md:text-2xl text-dark-text mb-4 uppercase tracking-widest font-medium">
+          <div className="font-sans mb-10 flex flex-col items-center">
+            <h3 className="text-lg text-dark-text mb-2 uppercase tracking-widest font-semibold leading-tight">
               {event.venue_name}
             </h3>
-            <p className="text-dark-text/80 text-sm md:text-base tracking-widest uppercase">
+            <p className="text-dark-text/80 text-mobile-small tracking-widest uppercase leading-relaxed max-w-[280px]">
               {event.address}
             </p>
           </div>
 
           {event.maps_url && (
-            <a href={event.maps_url} target="_blank" rel="noopener noreferrer">
-              <GoldButton>
-                Get Directions
-              </GoldButton>
+            <a 
+              href={event.maps_url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="touch-target w-full bg-gold-gradient text-white rounded font-sans uppercase tracking-widest text-sm font-semibold active:opacity-80 transition-opacity shadow-lg"
+            >
+              <MapPin className="w-5 h-5 mr-2" /> Get Directions
             </a>
           )}
         </motion.div>
