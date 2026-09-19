@@ -2,15 +2,15 @@
 
 import { WeddingConfig } from '@/types/database';
 import { motion } from 'framer-motion';
-import GoldParticles from '@/components/ui/gold/GoldParticles';
+import RosePetals from '@/components/ui/RosePetals';
 import GoldOrnament from '@/components/ui/gold/GoldOrnament';
 
 export default function Footer({ wedding }: { wedding: WeddingConfig }) {
   const mainEvent = wedding.events && wedding.events.length > 0 ? wedding.events[0] : null;
 
   return (
-    <footer className="relative bg-dark-luxury-gradient text-pure-white py-24 mobile-padding overflow-hidden flex flex-col items-center text-center pb-[env(safe-area-inset-bottom)]">
-      <GoldParticles />
+    <footer className="relative bg-dark-luxury-gradient text-dark-text py-24 mobile-padding overflow-hidden flex flex-col items-center text-center pb-[env(safe-area-inset-bottom)]">
+      <RosePetals />
 
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -40,7 +40,7 @@ export default function Footer({ wedding }: { wedding: WeddingConfig }) {
         )}
 
         {mainEvent && (
-          <div className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-pure-white/70 leading-relaxed mb-12">
+          <div className="font-sans text-[10px] md:text-xs uppercase tracking-widest text-dark-text/70 leading-relaxed mb-12">
             <p>{mainEvent.venue_name}</p>
             <p>{mainEvent.address}</p>
           </div>
@@ -48,7 +48,7 @@ export default function Footer({ wedding }: { wedding: WeddingConfig }) {
 
         <GoldOrnament className="w-6 h-6 opacity-40 mb-12" />
 
-        <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-pure-white/30">
+        <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-dark-text/30">
           Made with &hearts;
         </p>
       </motion.div>

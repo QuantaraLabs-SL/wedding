@@ -10,7 +10,7 @@ const SEED_WEDDING: WeddingConfig = {
   groom_name: 'Dineth',
   wedding_date: '2026-10-07T09:00:00+05:30', // Sri Lanka Time (UTC+5:30)
   invitation_message: 'Together with our families, we joyfully invite you to share in the celebration of our marriage.',
-  cover_image_url: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop',
+  cover_image_url: '/images/IMG_9045.jpg',
   couple_image_url: '/images/poruwa-couple.png',
   music_url: null,
   theme_id: 'classic',
@@ -38,15 +38,44 @@ const SEED_WEDDING: WeddingConfig = {
     {
       id: 'g1',
       wedding_id: '00000000-0000-0000-0000-000000000001',
-      image_url: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop',
+      image_url: '/images/IMG_9046.jpg',
       caption: null,
       sort_order: 1,
+      created_at: new Date().toISOString()
+    },
+    {
+      id: 'g2',
+      wedding_id: '00000000-0000-0000-0000-000000000001',
+      image_url: '/images/IMG_9047.jpg',
+      caption: null,
+      sort_order: 2,
+      created_at: new Date().toISOString()
+    },
+    {
+      id: 'g3',
+      wedding_id: '00000000-0000-0000-0000-000000000001',
+      image_url: '/images/IMG_9048.jpg',
+      caption: null,
+      sort_order: 3,
+      created_at: new Date().toISOString()
+    },
+    {
+      id: 'g4',
+      wedding_id: '00000000-0000-0000-0000-000000000001',
+      image_url: '/images/IMG_9049.jpg',
+      caption: null,
+      sort_order: 4,
       created_at: new Date().toISOString()
     }
   ]
 };
 
 export async function getWeddingBySlug(slug: string): Promise<WeddingConfig | null> {
+  // Always use seed wedding for local preview since DB has old data
+  if (slug === 'dineth-and-thathsarani') {
+    return SEED_WEDDING;
+  }
+
   const supabase = await createClient();
 
   try {

@@ -2,10 +2,13 @@ import { WeddingEvent } from '@/types/database';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, MapPin, Navigation, CalendarPlus } from 'lucide-react';
 import GoldOrnament from '@/components/ui/gold/GoldOrnament';
+import RosePetals from '@/components/ui/RosePetals';
 
 export default function EventsTimeline({ events }: { events: WeddingEvent[] }) {
   return (
     <section className="py-20 mobile-padding relative bg-soft-gold-bg overflow-hidden">
+      <RosePetals />
+      
       <div className="w-full max-w-[360px] mx-auto relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

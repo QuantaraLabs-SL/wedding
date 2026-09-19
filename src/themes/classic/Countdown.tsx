@@ -37,7 +37,7 @@ export default function Countdown({ targetDate }: { targetDate: string }) {
 
   return (
     <section className="py-16 mobile-padding relative">
-      <div className="w-full max-w-[360px] mx-auto text-center relative z-10">
+      <div className="w-full max-w-[480px] mx-auto text-center relative z-10">
         <motion.h2 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export default function Countdown({ targetDate }: { targetDate: string }) {
         {isPassed ? (
           <p className="text-2xl font-serif text-luxury-gold italic">The big day is here!</p>
         ) : (
-          <div className="flex flex-row justify-between items-center gap-2">
+          <div className="flex flex-row justify-between items-center gap-3">
             {[
               { label: 'Days', value: timeLeft.days },
               { label: 'Hours', value: timeLeft.hours },
@@ -63,12 +63,12 @@ export default function Countdown({ targetDate }: { targetDate: string }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="flex-1 flex flex-col items-center bg-pure-white py-4 px-1 rounded border border-luxury-gold/40 shadow-sm"
+                className="flex-1 flex flex-col items-center bg-pure-white py-6 md:py-8 px-2 rounded-lg border border-luxury-gold/40 shadow-md"
               >
-                <span className="text-2xl md:text-3xl font-serif text-gold-gradient mb-1">
+                <span className="text-3xl sm:text-4xl md:text-5xl font-serif text-gold-gradient mb-2">
                   {item.value.toString().padStart(2, '0')}
                 </span>
-                <span className="text-[9px] md:text-xs uppercase tracking-wider text-luxury-gold font-medium">
+                <span className="text-[10px] sm:text-xs md:text-sm uppercase tracking-wider text-luxury-gold font-medium">
                   {item.label}
                 </span>
               </motion.div>

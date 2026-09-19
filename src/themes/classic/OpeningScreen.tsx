@@ -2,7 +2,7 @@
 
 import { WeddingConfig } from '@/types/database';
 import { motion } from 'framer-motion';
-import GoldParticles from '@/components/ui/gold/GoldParticles';
+import RosePetals from '@/components/ui/RosePetals';
 import GoldButton from '@/components/ui/gold/GoldButton';
 
 export default function OpeningScreen({ 
@@ -18,7 +18,7 @@ export default function OpeningScreen({
       exit={{ opacity: 0, scale: 1.05 }}
       transition={{ duration: 1.5, ease: "easeInOut" }}
     >
-      <GoldParticles />
+      <RosePetals />
       
       {/* Elegant thin gold frame, adjusted for mobile */}
       <motion.div 

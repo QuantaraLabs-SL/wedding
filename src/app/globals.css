@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary-bg: #FFFDF8;
+  --color-primary-bg: #F8FAFC;
   --color-pure-white: #FFFFFF;
-  --color-luxury-gold: #D4AF37;
-  --color-bright-gold: #F4D06F;
-  --color-champagne-gold: #E8C875;
-  --color-deep-gold: #A67C00;
-  --color-dark-text: #24201A;
-  --color-soft-gold-bg: #FBF3D7;
+  --color-luxury-gold: #334155;
+  --color-bright-gold: #F472B6;
+  --color-champagne-gold: #FBCFE8;
+  --color-deep-gold: #0F172A;
+  --color-dark-text: #1E293B;
+  --color-soft-gold-bg: #FDF2F8;
 
   /* Fonts */
   --font-serif: var(--font-playfair);
@@ -16,14 +16,14 @@
 }
 
 :root {
-  --primary-bg: #FFFDF8;
+  --primary-bg: #F8FAFC;
   --pure-white: #FFFFFF;
-  --luxury-gold: #D4AF37;
-  --bright-gold: #F4D06F;
-  --champagne-gold: #E8C875;
-  --deep-gold: #A67C00;
-  --dark-text: #24201A;
-  --soft-gold-bg: #FBF3D7;
+  --luxury-gold: #334155;
+  --bright-gold: #F472B6;
+  --champagne-gold: #FBCFE8;
+  --deep-gold: #0F172A;
+  --dark-text: #1E293B;
+  --soft-gold-bg: #FDF2F8;
 }
 
 body {
@@ -71,8 +71,8 @@ body {
 .bg-dark-luxury-gradient {
   background: linear-gradient(
     180deg,
-    var(--dark-text) 0%,
-    #110f0c 100%
+    #FBCFE8 0%,
+    #F9A8D4 100%
   );
 }
 

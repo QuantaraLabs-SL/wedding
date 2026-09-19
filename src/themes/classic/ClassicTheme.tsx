@@ -59,9 +59,9 @@ export default function ClassicTheme({ wedding }: ClassicThemeProps) {
           </div>
 
           {/* SECTION C: White */}
-          <div className="bg-pure-white">
+          {/* <div className="bg-pure-white">
             <InvitationMessage wedding={wedding} />
-          </div>
+          </div> */}
 
           {/* SECTION D: Very light warm gold */}
           <div className="bg-soft-gold-bg">
@@ -89,9 +89,9 @@ export default function ClassicTheme({ wedding }: ClassicThemeProps) {
             <RSVPForm wedding={wedding} />
           </div>
           
-          <ShareSection wedding={wedding} />
+          {/* <ShareSection wedding={wedding} /> */}
           
-          <QRCodeSection />
+          {/* <QRCodeSection /> */}
 
           <Footer wedding={wedding} />
         </motion.main>
