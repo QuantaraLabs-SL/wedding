@@ -13,6 +13,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: "Wedding Invitation",
   description: "A premium digital wedding invitation.",
 };

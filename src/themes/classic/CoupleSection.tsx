@@ -23,6 +23,7 @@ export default function CoupleSection({ wedding }: { wedding: WeddingConfig }) {
             src={wedding.couple_image_url}
             alt={`${wedding.bride_name} & ${wedding.groom_name}`}
             fill
+            sizes="(max-width: 768px) 100vw, 320px"
             className="object-cover object-top"
           />
         </div>

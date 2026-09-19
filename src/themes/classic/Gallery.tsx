@@ -57,6 +57,7 @@ export default function Gallery({ images }: { images: GalleryImage[] }) {
                       src={img.image_url}
                       alt={img.caption || `Moment ${idx + 1}`}
                       fill
+                      sizes="(max-width: 768px) 100vw, 360px"
                       className="object-cover"
                       loading={idx === 0 ? "eager" : "lazy"}
                     />

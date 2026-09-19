@@ -11,7 +11,7 @@ const SEED_WEDDING: WeddingConfig = {
   wedding_date: '2026-10-07T09:00:00+05:30', // Sri Lanka Time (UTC+5:30)
   invitation_message: 'Together with our families, we joyfully invite you to share in the celebration of our marriage.',
   cover_image_url: '/images/IMG_9045.jpg',
-  couple_image_url: '/images/poruwa-couple.png',
+  couple_image_url: '/images/pinkPoruwa.png',
   music_url: null,
   theme_id: 'classic',
   published: true,
